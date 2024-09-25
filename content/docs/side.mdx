@@ -1,0 +1,30 @@
+---
+title: Side
+description: Enum que representa um lado do campo.
+---
+
+## Side::HOME
+Indida que a lateral é a `HOME`, lado esquerdo do campo `<<`.
+```php
+$side = Side::HOME;
+```
+
+## Side::AWAY
+Indida que a lateral é a `AWAY`, lado direito do campo `>>`.
+```php
+$side = Side::AWAY;
+```
+
+## fromString(string $value): Side
+Retorna um `Side` com base em uma string.
+```php
+$home = Side::fromString('home');
+$away = Side::fromString('away');
+```
+
+## fromInt(int $value): Side
+Retorna um `Side` com base em um número.
+```php
+$home = Side::fromInt(0);
+$away = Side::fromInt(1);
+```

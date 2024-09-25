@@ -1,0 +1,268 @@
+---
+title: Vector2D
+description: Classe que representa um vetor 2D.
+# icon: Goal
+---
+
+## eq(IPositionable $positionable): bool
+Retorna verdadeiro caso o ponto/vetor seja equivalente.
+```php
+$vetor->eq($pointOrVector);
+```
+
+## is(IPositionable $positionable): bool
+Retorna verdadeiro caso o ponto/vetor seja equivalente.
+```php
+$vetor->is($pointOrVector);
+```
+
+## getX(): float
+Retorna o eixo X do vetor.
+```php
+$vetor->getX();
+```
+
+## setX(float $x): self
+Define o eixo X do vetor.
+```php
+$vetor->setX(5000);
+```
+
+## addX(float $value): self
+Adiciona um valor ao eixo X do vetor.
+```php
+$vetor->addX(5000);
+```
+
+## subtractX(float $value): self
+Subtrai um valor ao eixo X do vetor.
+```php
+$vetor->subtractX(5000);
+```
+
+## scaleX(float $value): self
+Escala o eixo X do vetor.
+```php
+$vetor->scaleX(5000);
+```
+
+## divideX(float $value): self
+Divide o eixo X do vetor.
+```php
+$vetor->divideX(5000);
+```
+
+## getY(): float
+Retorna o eixo Y do vetor.
+```php
+$vetor->getY();
+```
+
+## setY(float $y): self
+Define o eixo Y do vetor.
+```php
+$vetor->setY(5000);
+```
+
+## addY(float $value): self
+Adiciona um valor ao eixo Y do vetor.
+```php
+$vetor->addY(5000);
+```
+
+## subtractY(float $value): self
+Subtrai um valor ao eixo Y do vetor.
+```php
+$vetor->subtractY(5000);
+```
+
+## scaleY(float $value): self
+Escala o eixo Y do vetor.
+```php
+$vetor->scaleY(5000);
+```
+
+## divideY(float $value): self
+Divide o eixo Y do vetor.
+```php
+$vetor->divideY(5000);
+```
+
+## normalize(): self
+Normaliza o vetor.
+```php
+$vetor->normalize();
+```
+
+## normalized(): IPositionable
+Retorna um clone normalizado do vetor.
+```php
+$newVector = $vetor->normalized();
+```
+
+## add(IPositionable | float $value): self
+Soma um valor em ambos os eixos do vetor.
+```php
+$vetor->add(new Point(100, 200));
+$vetor->add(300);
+```
+
+## added(IPositionable | float $value): IPositionable
+Retorna um clone do vetor com um valor somado a ambos os eixos.
+```php
+$newVector = $vetor->added(new Vector2D(100, 200));
+$newVector = $vetor->added(300);
+```
+
+## subctract(IPositionable | float $value): self
+Subtrai um valor em ambos os eixos do vetor.
+```php
+$vetor->subctract(new Vector2D(100, 200));
+$vetor->subctract(300);
+```
+
+## subtracted(IPositionable | float $value): IPositionable
+Retorna um clone do vetor com um valor subtraido a ambos os eixos.
+```php
+$newVector = $vetor->subtracted(new Vector2D(100, 200));
+$newVector = $vetor->subtracted(300);
+```
+
+## divide(IPositionable | float $value): self
+Divide ambos os eixos do vetor por um valor.
+```php
+$vetor->divide(new Vector2D(100, 200));
+$vetor->divide(300);
+```
+
+## divided(IPositionable | float $value): IPositionable
+Retorna um clone do vetor com ambos os eixos dividios por um valor.
+```php
+$newVector = $vetor->divided(new Vector2D(100, 200));
+$newVector = $vetor->divided(300);
+```
+
+## scale(IPositionable | float $value): self
+Escala ambos os eixos do vetor por um valor.
+```php
+$vetor->scale(new Vector2D(100, 200));
+$vetor->scale(300);
+```
+
+## scaled(IPositionable | float $value): IPositionable
+Retorna um clone do vetor com ambos os eixos escalados por um valor.
+```php
+$newVector = $vetor->scaled(new Vector2D(100, 200));
+$newVector = $vetor->scaled(300);
+```
+
+## magnitude(): float
+Retorna a magnitude do vetor.
+```php
+$vetor->magnitude();
+```
+
+## clone(): float
+Retorna um clone do vetor.
+```php
+$vetor->clone();
+```
+
+## directionTo(IPositionable $to): Vector2D
+Retorna a direção partindo do vetor para outro.
+```php
+$vetor->directionTo($pointOrVector);
+```
+
+## distanceTo(IPositionable $to): float
+Retorna a diistância de um vetor para outro.
+```php
+$vetor->distanceTo($pointOrVector);
+```
+
+## moveToDirection(Vector2D $direction, float $distance): self
+Desloca um vetor para direção X percorrendo uma distancia X.
+```php
+$direction = new Vector2D(0, 1);
+$distance = 40;
+$vetor->moveToDirection($direction, $distance);
+```
+
+## movedToDirection(Vector2D $direction, float $distance): Point
+Retorna um clone do vetor deslocado para direção X por uma distancia X.
+```php
+$direction = new Vector2D(0, 1);
+$distance = 40;
+$newVector = $vetor->movedToDirection($direction, $distance);
+```
+
+## moveToPoint(Point $point, float $distance): self;
+Desloca um ponto para direção a um vetor X percorrendo uma distancia X.
+```php
+$point = new Point(6000, 7000);
+$vetor->moveToPoint($point);
+```
+
+## movedToPoint(Point $point, float $distance): Point;
+Retorna um clone do ponto deslocado em direção a um vetor X por uma distancia X.
+```php
+$point = new Point(6000, 7000);
+$newVector = $vetor->movedToPoint($point);
+```
+
+## __toString(): string;
+Retorna o vetor em forma de string.
+```php
+echo $vetor;
+echo sprint('Coordenadas: %s', $vetor);
+// (x, y)
+```
+
+## Métodos
+```php
+eq(IPositionable $positionable): bool;
+is(IPositionable $positionable): bool;
+
+getX(): float;
+setX(float $x): self;
+addX(float $value): self;
+subtractX(float $value): self;
+scaleX(float $value): self;
+divideX(float $value): self;
+
+getY(): float;
+setY(float $y): self;
+addY(float $value): self;
+subtractY(float $value): self;
+scaleY(float $value): self;
+divideY(float $value): self;
+
+normalize(): self;
+normalized(): IPositionable;
+
+add(IPositionable | float $value): self;
+added(IPositionable | float $value): IPositionable;
+
+subtract(IPositionable | float $value): self;
+subtracted(IPositionable | float $value): IPositionable;
+
+divide(IPositionable | float $value): self;
+divided(IPositionable | float $value): IPositionable;
+
+scale(IPositionable | float $value): self;
+scaled(IPositionable | float $value): IPositionable;
+
+magnitude(): float;
+clone(): IPositionable;
+
+directionTo(IPositionable $to): Vector2D;
+distanceTo(IPositionable $to): float;
+
+moveToDirection(Vector2D $direction, float $distance): self;
+movedToDirection(Vector2D $direction, float $distance): IPositionable;
+
+moveToPoint(Point $point, float $distance): self;
+movedToPoint(Point $point, float $distance): IPositionable;
+
+__toString(): string;
+```

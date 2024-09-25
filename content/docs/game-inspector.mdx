@@ -1,0 +1,382 @@
+---
+title: GameInspector
+description: Classe que representa 1 frame do jogo, contém todos os dados.
+# icon: Goal
+---
+
+## getTurn(): int
+Retorna número do turno atual.
+```php
+$inspector->getTurn();
+```
+
+## getPlayer(Side $side, int $number): ?Player
+Retorna um jogador especifíco da partida.
+```php
+$player5 = $inspector->getPlayer(Side::HOME, 5);
+```
+
+## getTeam(Side $side): Team
+Retorna um dos dois times da partida com base no seu lado do campo.
+```php
+$homeTeam = $inspector->getTeam(Side::HOME);
+```
+
+## getFieldCenter(): Point
+Retorna o ponto central do campo.
+```php
+$fieldCenter = $inspector->getFieldCenter();
+```
+
+## hasShotClock(): bool
+Retorna se há um ShotClock, relógio que começa a contar quando algum jogador pega a bola.
+```php
+$hasShotClock = $inspector->hasShotClock();
+```
+
+## getShotClock(): ?ShotClock
+Retorna o ShotClock da bola caso exista.
+```php
+$shotClock = $inspector->getShotClock();
+```
+
+## getBall(): Ball
+Retorna a bola da partida.
+```php
+$ball = $inspector->getBall();
+```
+
+## getBallPosition(): Point
+Retorna a posição atual da bola.
+```php
+$position = $inspector->getBallPosition();
+```
+
+## getBallDirection(): Point
+Retorna a direção atual da bola.
+```php
+$position = $inspector->getBallDirection();
+```
+
+## getBallSpeed(): Point
+Retorna a velocidade atual da bola.
+```php
+$position = $inspector->getBallSpeed();
+```
+
+## getBallHasHolder(): bool
+Retorna verdadeiro caso a bola esteja com alguém.
+```php
+$hasHolder = $inspector->getBallHasHolder();
+```
+
+## getBallTurnsInGoalZone(): bool
+Retorna o número de turnos que a bola está dentro da zona de gol.
+```php
+$inspector->getBallTurnsInGoalZone();
+```
+
+## getBallRemainingTurnsInGoalZone(): bool
+Retorna o número de turnos restantes que a bola ainda pode ficar na àrea do gol antes de ser kickada.
+```php
+$inspector->getBallRemainingTurnsInGoalZone();
+```
+
+## getAttackGoal(): Goal
+Retorna o gol que você precisa atacar e fazer gols.
+```php
+$attackGoal = $inspector->getAttackGoal();
+```
+
+## getDefenseGoal(): Goal
+Retorna o gol que você precisa defender e impedir o time adversário de fazer gols.
+```php
+$defenseGoal = $inspector->getDefenseGoal();
+```
+
+## getMe(): Player
+Retorna o player que representa o bot atual.
+```php
+$me = $inspector->getMe();
+```
+
+## getMyState(): PlayerState
+Retorna estado do bot atual.
+```php
+$state = $inspector->getMyState();
+```
+
+## getMyTeam(): Team
+Retorna o time do bot atual.
+```php
+$team = $inspector->getMyTeam();
+```
+
+## getMyPosition(): Point
+Retorna a posição do bot atual.
+```php
+$position = $inspector->getMyPosition();
+```
+
+## getMyDirection(): Vector2D
+Retorna a direlção do bot atual.
+```php
+$direction = $inspector->getMyDirection();
+```
+
+## getMySpeed(): float
+Retorna a velocidade do bot atual.
+```php
+$speed = $inspector->getMySpeed();
+```
+
+## getMyVelocity(): Velocity
+Retorna o "movimento" (Velocity) do bot atual.
+```php
+$velocity = $inspector->getMyVelocity();
+```
+
+## getMyPlayers(): array
+Retorna todos os bots do seu time.
+```php
+$players = $inspector->getMyPlayers();
+```
+
+## getMyGoalkeeper(): Player
+Retorna o goleiro do seu time.
+```php
+$goalkeeper = $inspector->getMyGoalkeeper();
+```
+
+##  tryGetMyGoalkeeper(): ?Player;
+Retorna o goleiro do seu time ou `null`.
+```php
+$goalkeeper = $inspector->getMyGoalkeeper();
+```
+
+## getMyScore(): float
+Retorna a pontuação do seu time.
+```php
+$score = $inspector->getMyScore();
+```
+
+## getMyPlayer(int $number): Player
+Retorna um jogador especifíco do seu time.
+```php
+$myPlayer5 = $inspector->getMyPlayer(5);
+```
+
+## tryGetMyPlayer(int $number): ?Player
+Retorna um jogador especifíco do seu time ou `null`.
+```php
+$myPlayer5 = $inspector->tryGetMyPlayer(5);
+```
+
+## getOpponentPlayer(int $number): Player
+Retorna um jogador especifíco do time adversário.
+```php
+$opponentPlayer5 = $inspector->getOpponentPlayer(5);
+```
+
+## tryGetOpponentPlayer(int $number): ?Player;
+Retorna um jogador especifíco do time adversário ou `null`.
+```php
+$opponentPlayer5 = $inspector->tryGetOpponentPlayer(5);
+```
+
+## getOpponentTeam(): Team
+Retorna o time adversário.
+```php
+$opponentTeam = $inspector->getOpponentTeam();
+```
+
+## getOpponentSide(): Side
+Retorna o lado time adversário.
+```php
+$opponentSide = $inspector->getOpponentSide();
+```
+
+## getOpponentPlayers(): array
+Retorna todos os jogadores do time adversário.
+```php
+$opponentPlayers = $inspector->getOpponentPlayers();
+```
+
+## getOpponentGoalkeeper(): Player
+Retorna o goleiro do time adversário.
+```php
+$opponentGoalkeeper = $inspector->getOpponentGoalkeeper();
+```
+
+## tryGetOpponentGoalkeeper(): ?Player
+Retorna o goleiro do time adversário ou `null`.
+```php
+$opponentGoalkeeper = $inspector->tryGetOpponentGoalkeeper();
+```
+
+## getOpponentScore(): float
+Retorna a pontuação do time adversário.
+```php
+$score = $inspector->getOpponentScore();
+```
+
+## makeOrderMoveToPoint(Point $point, ?float $speed): Order
+Retorna uma ordem de movimentação em direção a um ponto X.
+```php
+$order = $inspector->makeOrderMoveToPoint(new Point(x, y), 50);
+$order = $inspector->makeOrderMoveToPoint(new Point(x, y)); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
+## makeOrderKickToPoint(Point $target, ?float $speed): Order
+Retorna uma ordem de chute em direção a um ponto X.
+```php
+$order = $inspector->makeOrderKickToPoint(new Point(x, y), 200);
+$order = $inspector->makeOrderKickToPoint(new Point(x, y)); // speed = SPECS::BALL_MAX_SPEED;
+```
+
+## makeOrderMoveToDirection(Vector2D $direction, ?float $speed): Order
+Retorna uma ordem de movimentação na direção X.
+```php
+$order = $inspector->makeOrderMoveToDirection(new Point(x, y), 50);
+$order = $inspector->makeOrderMoveToDirection(new Point(x, y)); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
+## makeOrderKickToDirection(Vector2D $direction, ?float $speed): Order
+Retorna uma ordem de chute na direção X.
+```php
+$order = $inspector->makeOrderKickToDirection(new Vector2D(x, y), 200);
+$order = $inspector->makeOrderKickToDirection(new Vector2D(x, y)); // speed = SPECS::BALL_MAX_SPEED;
+```
+
+## makeOrderMoveToRegion(IRegion $region, ?float $speed): Order
+Retorna uma ordem de movimentação em direção ao centro de uma região X.
+```php
+$region = $mapper->getRegion(4, 3);
+$order = $inspector->makeOrderMoveToRegion($region, 50);
+$order = $inspector->makeOrderMoveToRegion($region); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
+## makeOrderKickToRegion(IRegion $region, ?float $speed): Order
+Retorna uma ordem de chute em direção ao centro de uma região X.
+```php
+$region = $mapper->getRegion(4, 3);
+$order = $inspector->makeOrderKickToRegion($region, 200);
+$order = $inspector->makeOrderKickToRegion($region); // speed = SPECS::BALL_MAX_SPEED;
+```
+
+## makeOrderMoveToPlayer(Player $player, ?float $speed): Order
+Retorna uma ordem de movimentação em direção a um player X.
+```php
+$player = $inspector->getMyPlayer(4);
+$order = $inspector->makeOrderMoveToPlayer($player, 50);
+$order = $inspector->makeOrderMoveToPlayer($player); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
+## makeOrderKickToPlayer(Player $player, ?float $speed): Order
+Retorna uma ordem de chute em direção a um player X.
+```php
+$player = $inspector->getMyPlayer(4);
+$order = $inspector->makeOrderKickToPlayer($player, 200);
+$order = $inspector->makeOrderKickToPlayer($player); // speed = SPECS::BALL_MAX_SPEED;
+```
+
+## makeOrderLookAtPoint(Point $point): Order
+Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em direção a um ponto X.
+```php
+$order = $inspector->makeOrderLookAtPoint(new Point(x, y));
+```
+
+## makeOrderLookAtDirection(Vector2D $direction): Order
+Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em uma direção X.
+```php
+$order = $inspector->makeOrderLookAtPoint(new Vector2D(x, y));
+```
+
+## makeOrderStop(): Order
+Retorna uma ordem de movimentação com velocidade 0, e com a mesma direção atual do jogador, que faz com que ele apenas permaneça no lugar.
+```php
+$order = $inspector->makeOrderStop();
+```
+
+## makeOrderJumpToPoint(Point $target, ?float $speed): Order
+Retorna uma ordem de pulo em direção a um ponto X.
+```php
+$order = $inspector->makeOrderKickToPlayer(new Point(x, y), 100);
+$order = $inspector->makeOrderKickToPlayer(new Point(x, y)); // speed = SPECS::GOALKEEPER_JUMP_MAX_SPEED;
+```
+
+## makeOrderCatch(): Order
+Retorna uma ordem de captura da bola.
+```php
+$order = $inspector->makeOrderCatch();
+```
+
+## Métodos
+```php
+getSnapshot(): ?GameSnapshot;
+getTurn(): int;
+getPlayer(Side $side, int $number): Player;
+tryGetPlayer(Side $side, int $number): ?Player;
+getTeam(Side $side): Team;
+getFieldCenter():  Point;
+
+hasShotClock(): bool;
+getShotClock(): ?ShotClock;
+
+getBall(): Ball;
+getBallHasHolder(): bool;
+getBallTurnsInGoalZone(): int;
+getBallRemainingTurnsInGoalZone(): int;
+getBallPosition(): Point;
+getBallDirection(): Vector2D;
+getBallSpeed(): float;
+
+getAttackGoal(): Goal;
+getDefenseGoal(): Goal;
+
+getMe(): Player;
+getMyState(): PlayerState;
+getMyTeam(): ?Team;
+getMyNumber(): int;
+getMySide(): Side;
+getMyPosition(): Point;
+getMyDirection(): Vector2D;
+getMySpeed(): float;
+getMyVelocity(): Velocity;
+getMyPlayers(): array;
+getMyGoalkeeper(): Player;
+tryGetMyGoalkeeper(): ?Player;
+getMyScore(): float;
+getMyPlayer(int $number): Player;
+tryGetMyPlayer(int $number): ?Player;
+    
+getOpponentPlayer(int $number): Player;
+tryGetOpponentPlayer(int $number): ?Player;
+getOpponentTeam(): Team;
+getOpponentSide(): Side;
+getOpponentPlayers(): array;
+getOpponentGoalkeeper(): Player;
+tryGetOpponentGoalkeeper(): ?Player;
+getOpponentScore(): float;
+
+makeOrderMoveToPoint(Point $point, ?float $speed): Order;
+makeOrderKickToPoint(Point $target, ?float $speed): Order;
+
+makeOrderMoveToDirection(Vector2D $direction, ?float $speed): Order;
+makeOrderKickToDirection(Vector2D $direction, ?float $speed): Order;
+    
+makeOrderMoveToRegion(IRegion $region, ?float $speed): Order;
+makeOrderKickToRegion(IRegion $region, ?float $speed): Order;
+    
+makeOrderMoveToPlayer(Player $player, ?float $speed): Order;
+makeOrderKickToPlayer(Player $player, ?float $speed): Order;
+    
+makeOrderLookAtPoint(Point $point): Order;
+makeOrderLookAtDirection(Vector2D $direction): Order;
+
+makeOrderStop(): Order;
+
+makeOrderJumpToPoint(Point $target, ?float $speed): Order;
+
+makeOrderCatch(): Order;
+```

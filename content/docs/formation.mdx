@@ -1,0 +1,204 @@
+---
+title: Formation
+description: Classe que representa uma formação.
+---
+
+## getName(): string
+Retorna o nome da formação.
+```php
+$formation->getName();
+```
+
+## setName(string $name): self
+Define o nome da formação.
+```php
+$formation->setName('name');
+```
+
+## getType(): FormationType
+Retorna o tipo da formação.
+```php
+$formation->getType();
+```
+
+## setType(FormationType $type): self
+Define o tipo da formação.
+```php
+$formation->setType(FormationType::REGIONS);
+$formation->setType(FormationType::POINTS);
+```
+
+## getPositionOf(int $playerNumber): Point
+Retorna a posição do jogador X na formação.
+```php
+$formation->getPositionOf(3);
+```
+
+## setPositionOf(int $playerNumber, Point $position): self
+Define a posição do jogador X na formação.
+```php
+$position = new Point(5999, 5687);
+$formation->setPositionOf(3, $point);
+```
+
+## definePositionOf(int $playerNumber, float $x, float $y): self
+Define a posição do jogador X na formação.
+```php
+$formation->setPositionOf(3, 5999, 5687);
+```
+
+## getPositionOfX(): Point
+Retorna a posição do jogador X na formação.
+```php
+$formation->getPositionOf01();
+$formation->getPositionOf02();
+$formation->getPositionOf03();
+$formation->getPositionOf04();
+$formation->getPositionOf05();
+$formation->getPositionOf06();
+$formation->getPositionOf07();
+$formation->getPositionOf08();
+$formation->getPositionOf09();
+$formation->getPositionOf10();
+$formation->getPositionOf11();
+```
+
+## setPositionOfX(Point $position): self
+Define a posição do jogador X na formação.
+```php
+$position = new Point(5999, 5687);
+
+$formation->setPositionOf01($position);
+$formation->setPositionOf02($position);
+$formation->setPositionOf03($position);
+$formation->setPositionOf04($position);
+$formation->setPositionOf05($position);
+$formation->setPositionOf06($position);
+$formation->setPositionOf07($position);
+$formation->setPositionOf08($position);
+$formation->setPositionOf09($position);
+$formation->setPositionOf10($position);
+$formation->setPositionOf11($position);
+```
+
+## definePositionOfX(Point $position): self
+Define a posição do jogador X na formação.
+```php
+$formation->setPositionOf01(5999, 5687);
+$formation->setPositionOf02(5999, 5687);
+$formation->setPositionOf03(5999, 5687);
+$formation->setPositionOf04(5999, 5687);
+$formation->setPositionOf05(5999, 5687);
+$formation->setPositionOf06(5999, 5687);
+$formation->setPositionOf07(5999, 5687);
+$formation->setPositionOf08(5999, 5687);
+$formation->setPositionOf09(5999, 5687);
+$formation->setPositionOf10(5999, 5687);
+$formation->setPositionOf11(5999, 5687);
+```
+
+## toArray(): array
+Define um array de points com as posições dos jogadores.
+```php
+$array = $formation->toArray();
+
+// [
+// 	1 => Point,
+// 	2 => Point,
+// 	3 => Point,
+// 	4 => Point,
+// 	5 => Point,
+// 	6 => Point,
+// 	7 => Point,
+// 	8 => Point,
+// 	9 => Point,
+// 	10 => Point,
+// 	11 => Point,
+// ];
+```
+
+## createZeroed(): IFormation
+Cria uma formação com todos os jogadores na posição `x: 0, y: 0`.
+```php
+$formation = Formation::createZeroed();
+```
+
+## createFromArray(array $array): IFormation
+Cria uma formação com todos os jogadores na posição `x: 0, y: 0`.
+```php
+$formation = Formation::createFromArray([
+	1 => ['col' => 0, 'row' => 0],
+    2 => ['col' => 1, 'row' => 1],
+    3 => ['col' => 2, 'row' => 2],
+    4 => ['col' => 2, 'row' => 3],
+    5 => ['col' => 1, 'row' => 4],
+    6 => ['col' => 3, 'row' => 1],
+    7 => ['col' => 3, 'row' => 2],
+    8 => ['col' => 3, 'row' => 3],
+    9 => ['col' => 3, 'row' => 4],
+    10 => ['col' => 4, 'row' => 3],
+    11 => ['col' => 4, 'row' => 2],
+]);
+```
+
+## Métodos
+```php
+getName(): string;
+setName(string $name): self;
+
+getType(): FormationType;
+setType(FormationType $type): self;
+
+getPositionOf(int $playerNumber): Point;
+setPositionOf(int $playerNumber, Point $position): self;
+definePositionOf(int $playerNumber, float $x, float $y): self;
+
+getPositionOf01(): Point;
+setPositionOf01(Point $position): self;
+definePositionOf01(float $x, float $y): self;
+
+getPositionOf02(): Point;
+setPositionOf02(Point $position): self;
+definePositionOf02(float $x, float $y): self;
+
+getPositionOf03(): Point;
+setPositionOf03(Point $position): self;
+definePositionOf03(float $x, float $y): self;
+
+getPositionOf04(): Point;
+setPositionOf04(Point $position): self;
+definePositionOf04(float $x, float $y): self;
+
+getPositionOf05(): Point;
+setPositionOf05(Point $position): self;
+definePositionOf05(float $x, float $y): self;
+
+getPositionOf06(): Point;
+setPositionOf06(Point $position): self;
+definePositionOf06(float $x, float $y): self;
+
+getPositionOf07(): Point;
+setPositionOf07(Point $position): self;
+definePositionOf07(float $x, float $y): self;
+
+getPositionOf08(): Point;
+setPositionOf08(Point $position): self;
+definePositionOf08(float $x, float $y): self;
+
+getPositionOf09(): Point;
+setPositionOf09(Point $position): self;
+definePositionOf09(float $x, float $y): self;
+
+getPositionOf10(): Point;
+setPositionOf10(Point $position): self;
+definePositionOf10(float $x, float $y): self;
+
+getPositionOf11(): Point;
+setPositionOf11(Point $position): self;
+definePositionOf11(float $x, float $y): self;
+
+toArray(): array;
+
+createZeroed(): IFormation;
+createFromArray(array $array): IFormation;
+```

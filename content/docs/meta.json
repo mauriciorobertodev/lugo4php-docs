@@ -1,0 +1,28 @@
+{
+  "title": "Lugo4php",
+  "description": "Documentação",
+  "icon": "Loader2",
+  "root": true,
+  "pages": [
+	"index",
+    "---Guias---",
+    "start-new-bot",
+    "---Classes---",
+	"bot",
+	"game-inspector",
+	"ball",
+	"env",
+	"formation",
+	"goal",
+	"mapper",
+	"player",
+	"region",
+	"team",
+	"point",
+	"vector2d",
+	"velocity",
+    "---Enums---",
+    "player-state",
+    "side"
+  ]
+}

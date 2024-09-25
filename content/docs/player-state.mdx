@@ -1,0 +1,37 @@
+---
+title: PlayerState
+description: Enum que representa o estado do jogador.
+---
+
+## PlayerState::SUPPORTING
+Este estado sifignica que algum outro jogador do seu time está com bola.
+```php
+$state = PlayerState::SUPPORTING;
+```
+
+## PlayerState::HOLDING
+Este estado sifignica o jogador está com a bola.
+```php
+$state = PlayerState::HOLDING;
+```
+
+## PlayerState::DEFENDING
+Este estado sifignica algum jogador do time adverssário está com a bola.
+```php
+$state = PlayerState::DEFENDING;
+```
+
+## PlayerState::DISPUTING
+Este estado sifignica nenhum jogador de ambos os times está com a bola.
+```php
+$state = PlayerState::DISPUTING;
+```
+
+## fromString(string $value): PlayerState
+Retorna um `PlayerState` com base em uma string.
+```php
+$supporting = PlayerState::fromString('supporting');
+$holding = PlayerState::fromString('holding');
+$defending = PlayerState::fromString('defending');
+$disputing = PlayerState::fromString('disputing');
+```

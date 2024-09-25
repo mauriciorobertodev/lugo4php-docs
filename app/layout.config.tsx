@@ -9,11 +9,11 @@ import { type HomeLayoutProps } from 'fumadocs-ui/home-layout';
  */
 export const baseOptions: HomeLayoutProps = {
   nav: {
-    title: 'My App',
+    title: 'Lugo4php',
   },
   links: [
     {
-      text: 'Documentation',
+      text: 'Documentação',
       url: '/docs',
       active: 'nested-url',
     },
