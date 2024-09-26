@@ -10,10 +10,16 @@ Retorna número do turno atual.
 $inspector->getTurn();
 ```
 
-## getPlayer(Side $side, int $number): ?Player
-Retorna um jogador especifíco da partida.
+## getPlayer(Side $side, int $number): Player
+Retorna um jogador especifíco da partida, lança um erro caso não exista.
 ```php
 $player5 = $inspector->getPlayer(Side::HOME, 5);
+```
+
+## getPlayer(Side $side, int $number): ?Player
+Retorna um jogador especifíco da partida, ou `null` caso não exista.
+```php
+$player5OrNot = $inspector->tryGetPlayer(Side::HOME, 5);
 ```
 
 ## getTeam(Side $side): Team
@@ -143,15 +149,15 @@ $players = $inspector->getMyPlayers();
 ```
 
 ## getMyGoalkeeper(): Player
-Retorna o goleiro do seu time.
+Retorna o goleiro do seu time, lança um erro caso não exista.
 ```php
 $goalkeeper = $inspector->getMyGoalkeeper();
 ```
 
 ##  tryGetMyGoalkeeper(): ?Player;
-Retorna o goleiro do seu time ou `null`.
+Retorna o goleiro do seu time, ou `null` caso não exista.
 ```php
-$goalkeeper = $inspector->getMyGoalkeeper();
+$goalkeeperOrNot = $inspector->tryGetMyGoalkeeper();
 ```
 
 ## getMyScore(): float
@@ -161,27 +167,27 @@ $score = $inspector->getMyScore();
 ```
 
 ## getMyPlayer(int $number): Player
-Retorna um jogador especifíco do seu time.
+Retorna um jogador especifíco do seu time, lança um erro caso não exista.
 ```php
 $myPlayer5 = $inspector->getMyPlayer(5);
 ```
 
 ## tryGetMyPlayer(int $number): ?Player
-Retorna um jogador especifíco do seu time ou `null`.
+Retorna um jogador especifíco do seu time, ou `null` caso não exista.
 ```php
-$myPlayer5 = $inspector->tryGetMyPlayer(5);
+$myPlayer5OrNot = $inspector->tryGetMyPlayer(5);
 ```
 
 ## getOpponentPlayer(int $number): Player
-Retorna um jogador especifíco do time adversário.
+Retorna um jogador especifíco do time adversário, lança um erro caso não exista.
 ```php
 $opponentPlayer5 = $inspector->getOpponentPlayer(5);
 ```
 
 ## tryGetOpponentPlayer(int $number): ?Player;
-Retorna um jogador especifíco do time adversário ou `null`.
+Retorna um jogador especifíco do time adversário, ou `null` caso não exista.
 ```php
-$opponentPlayer5 = $inspector->tryGetOpponentPlayer(5);
+$opponentPlayer5OrNot = $inspector->tryGetOpponentPlayer(5);
 ```
 
 ## getOpponentTeam(): Team
@@ -203,15 +209,15 @@ $opponentPlayers = $inspector->getOpponentPlayers();
 ```
 
 ## getOpponentGoalkeeper(): Player
-Retorna o goleiro do time adversário.
+Retorna o goleiro do time adversário, lança um erro caso não exista.
 ```php
 $opponentGoalkeeper = $inspector->getOpponentGoalkeeper();
 ```
 
 ## tryGetOpponentGoalkeeper(): ?Player
-Retorna o goleiro do time adversário ou `null`.
+Retorna o goleiro do time adversário, ou `null` caso não exista.
 ```php
-$opponentGoalkeeper = $inspector->tryGetOpponentGoalkeeper();
+$opponentGoalkeeperOrNot = $inspector->tryGetOpponentGoalkeeper();
 ```
 
 ## getOpponentScore(): float
@@ -221,88 +227,167 @@ $score = $inspector->getOpponentScore();
 ```
 
 ## makeOrderMoveToPoint(Point $point, ?float $speed): Order
-Retorna uma ordem de movimentação em direção a um ponto X.
+Retorna uma ordem de movimentação em direção a um ponto X, lança um erro caso gere uma ordem inválida.
 ```php
 $order = $inspector->makeOrderMoveToPoint(new Point(x, y), 50);
 $order = $inspector->makeOrderMoveToPoint(new Point(x, y)); // speed = SPECS::PLAYER_MAX_SPEED;
 ```
 
+## tryMakeOrderMoveToPoint(Point $point, ?float $speed): ?Order
+Retorna uma ordem de movimentação em direção a um ponto X, ou null caso gere uma ordem inválida.
+```php
+$orderOrNull = $inspector->tryMakeOrderMoveToPoint(new Point(x, y), 50);
+$orderOrNull = $inspector->tryMakeOrderMoveToPoint(new Point(x, y)); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
 ## makeOrderKickToPoint(Point $target, ?float $speed): Order
-Retorna uma ordem de chute em direção a um ponto X.
+Retorna uma ordem de chute em direção a um ponto X, lança um erro caso gere uma ordem inválida.
 ```php
 $order = $inspector->makeOrderKickToPoint(new Point(x, y), 200);
 $order = $inspector->makeOrderKickToPoint(new Point(x, y)); // speed = SPECS::BALL_MAX_SPEED;
 ```
 
+## tryMakeOrderKickToPoint(Point $target, ?float $speed): ?Order
+Retorna uma ordem de chute em direção a um ponto X, ou null caso gere uma ordem inválida.
+```php
+$orderOrNull = $inspector->tryMakeOrderKickToPoint(new Point(x, y), 200);
+$orderOrNull = $inspector->tryMakeOrderKickToPoint(new Point(x, y)); // speed = SPECS::BALL_MAX_SPEED;
+```
+
 ## makeOrderMoveToDirection(Vector2D $direction, ?float $speed): Order
-Retorna uma ordem de movimentação na direção X.
+Retorna uma ordem de movimentação na direção X, lança um erro caso gere uma ordem inválida.
 ```php
 $order = $inspector->makeOrderMoveToDirection(new Point(x, y), 50);
 $order = $inspector->makeOrderMoveToDirection(new Point(x, y)); // speed = SPECS::PLAYER_MAX_SPEED;
 ```
 
+## tryMakeOrderMoveToDirection(Vector2D $direction, ?float $speed): ?Order
+Retorna uma ordem de movimentação na direção X, ou null caso gere uma ordem inválida.
+```php
+$orderOrNull = $inspector->tryMakeOrderMoveToDirection(new Point(x, y), 50);
+$orderOrNull = $inspector->tryMakeOrderMoveToDirection(new Point(x, y)); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
 ## makeOrderKickToDirection(Vector2D $direction, ?float $speed): Order
-Retorna uma ordem de chute na direção X.
+Retorna uma ordem de chute na direção X, lança um erro caso gere uma ordem inválida.
 ```php
 $order = $inspector->makeOrderKickToDirection(new Vector2D(x, y), 200);
 $order = $inspector->makeOrderKickToDirection(new Vector2D(x, y)); // speed = SPECS::BALL_MAX_SPEED;
 ```
 
+## tryMakeOrderKickToDirection(Vector2D $direction, ?float $speed): ?Order
+Retorna uma ordem de chute na direção X, ou null caso gere uma ordem inválida.
+```php
+$orderOrNull = $inspector->tryMakeOrderKickToDirection(new Vector2D(x, y), 200);
+$orderOrNull = $inspector->tryMakeOrderKickToDirection(new Vector2D(x, y)); // speed = SPECS::BALL_MAX_SPEED;
+```
+
 ## makeOrderMoveToRegion(IRegion $region, ?float $speed): Order
-Retorna uma ordem de movimentação em direção ao centro de uma região X.
+Retorna uma ordem de movimentação em direção ao centro de uma região X, lança um erro caso gere uma ordem inválida.
 ```php
 $region = $mapper->getRegion(4, 3);
 $order = $inspector->makeOrderMoveToRegion($region, 50);
 $order = $inspector->makeOrderMoveToRegion($region); // speed = SPECS::PLAYER_MAX_SPEED;
 ```
 
+## tryMakeOrderMoveToRegion(IRegion $region, ?float $speed): ?Order
+Retorna uma ordem de movimentação em direção ao centro de uma região X, ou null caso gere uma ordem inválida.
+```php
+$region = $mapper->getRegion(4, 3);
+$orderOrNull = $inspector->tryMakeOrderMoveToRegion($region, 50);
+$orderOrNull = $inspector->tryMakeOrderMoveToRegion($region); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
 ## makeOrderKickToRegion(IRegion $region, ?float $speed): Order
-Retorna uma ordem de chute em direção ao centro de uma região X.
+Retorna uma ordem de chute em direção ao centro de uma região X, lança um erro caso gere uma ordem inválida.
 ```php
 $region = $mapper->getRegion(4, 3);
 $order = $inspector->makeOrderKickToRegion($region, 200);
 $order = $inspector->makeOrderKickToRegion($region); // speed = SPECS::BALL_MAX_SPEED;
 ```
 
+## tryMakeOrderKickToRegion(IRegion $region, ?float $speed): ?Order
+Retorna uma ordem de chute em direção ao centro de uma região X, ou null caso gere uma ordem inválida.
+```php
+$region = $mapper->getRegion(4, 3);
+$orderOrNull = $inspector->tryMakeOrderKickToRegion($region, 200);
+$orderOrNull = $inspector->tryMakeOrderKickToRegion($region); // speed = SPECS::BALL_MAX_SPEED;
+```
+
 ## makeOrderMoveToPlayer(Player $player, ?float $speed): Order
-Retorna uma ordem de movimentação em direção a um player X.
+Retorna uma ordem de movimentação em direção a um player X, lança um erro caso gere uma ordem inválida.
 ```php
 $player = $inspector->getMyPlayer(4);
 $order = $inspector->makeOrderMoveToPlayer($player, 50);
 $order = $inspector->makeOrderMoveToPlayer($player); // speed = SPECS::PLAYER_MAX_SPEED;
 ```
 
+## tryMakeOrderMoveToPlayer(Player $player, ?float $speed): ?Order
+Retorna uma ordem de movimentação em direção a um player X, ou null caso gere uma ordem inválida.
+```php
+$player = $inspector->getMyPlayer(4);
+$orderOrNull = $inspector->tryMakeOrderMoveToPlayer($player, 50);
+$orderOrNull = $inspector->tryMakeOrderMoveToPlayer($player); // speed = SPECS::PLAYER_MAX_SPEED;
+```
+
 ## makeOrderKickToPlayer(Player $player, ?float $speed): Order
-Retorna uma ordem de chute em direção a um player X.
+Retorna uma ordem de chute em direção a um player X, lança um erro caso gere uma ordem inválida.
 ```php
 $player = $inspector->getMyPlayer(4);
 $order = $inspector->makeOrderKickToPlayer($player, 200);
 $order = $inspector->makeOrderKickToPlayer($player); // speed = SPECS::BALL_MAX_SPEED;
 ```
 
+## tryMakeOrderKickToPlayer(Player $player, ?float $speed): ?Order
+Retorna uma ordem de chute em direção a um player X, ou null caso gere uma ordem inválida.
+```php
+$player = $inspector->getMyPlayer(4);
+$order = $inspector->tryMakeOrderKickToPlayer($player, 200);
+$order = $inspector->tryMakeOrderKickToPlayer($player); // speed = SPECS::BALL_MAX_SPEED;
+```
+
 ## makeOrderLookAtPoint(Point $point): Order
-Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em direção a um ponto X.
+Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em direção a um ponto X, lança um erro caso gere uma ordem inválida.
 ```php
 $order = $inspector->makeOrderLookAtPoint(new Point(x, y));
 ```
 
-## makeOrderLookAtDirection(Vector2D $direction): Order
-Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em uma direção X.
+## tryMakeOrderLookAtPoint(Point $point): Order
+Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em direção a um ponto X, ou null caso gere uma ordem inválida.
 ```php
-$order = $inspector->makeOrderLookAtPoint(new Vector2D(x, y));
+$orderOrNull = $inspector->tryMakeOrderLookAtPoint(new Point(x, y));
+```
+
+## makeOrderLookAtDirection(Vector2D $direction): Order
+Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em uma direção X, lança um erro caso gere uma ordem inválida.
+```php
+$order = $inspector->makeOrderLookAtDirection(new Vector2D(x, y));
+```
+
+## tryMakeOrderLookAtDirection(Vector2D $direction): Order
+Retorna uma ordem de movimentação com velocidade 0, que faz o jogador permanecer no local mas olhar em uma direção X, ou null caso gere uma ordem inválida.
+```php
+$orderOrNull = $inspector->tryMakeOrderLookAtDirection(new Vector2D(x, y));
+```
+
+## makeOrderJumpToPoint(Point $target, ?float $speed): Order
+Retorna uma ordem de pulo em direção a um ponto X, lança um erro caso gere uma ordem inválida.
+```php
+$order = $inspector->makeOrderJumpToPoint(new Point(x, y), 100);
+$order = $inspector->makeOrderJumpToPoint(new Point(x, y)); // speed = SPECS::GOALKEEPER_JUMP_MAX_SPEED;
+```
+
+## makeOrderJumpToPoint(Point $target, ?float $speed): ?Order
+Retorna uma ordem de pulo em direção a um ponto X, ou null caso gere uma ordem inválida.
+```php
+$orderOrNull = $inspector->makeOrderJumpToPoint(new Point(x, y), 100);
+$orderOrNull = $inspector->makeOrderJumpToPoint(new Point(x, y)); // speed = SPECS::GOALKEEPER_JUMP_MAX_SPEED;
 ```
 
 ## makeOrderStop(): Order
 Retorna uma ordem de movimentação com velocidade 0, e com a mesma direção atual do jogador, que faz com que ele apenas permaneça no lugar.
 ```php
 $order = $inspector->makeOrderStop();
-```
-
-## makeOrderJumpToPoint(Point $target, ?float $speed): Order
-Retorna uma ordem de pulo em direção a um ponto X.
-```php
-$order = $inspector->makeOrderKickToPlayer(new Point(x, y), 100);
-$order = $inspector->makeOrderKickToPlayer(new Point(x, y)); // speed = SPECS::GOALKEEPER_JUMP_MAX_SPEED;
 ```
 
 ## makeOrderCatch(): Order
@@ -338,7 +423,7 @@ getMe(): Player;
 getMyState(): PlayerState;
 getMyTeam(): ?Team;
 getMyNumber(): int;
-getMySide(): Side;
+getMyTeamSide(): Side;
 getMyPosition(): Point;
 getMyDirection(): Vector2D;
 getMySpeed(): float;
@@ -364,19 +449,37 @@ makeOrderKickToPoint(Point $target, ?float $speed): Order;
 
 makeOrderMoveToDirection(Vector2D $direction, ?float $speed): Order;
 makeOrderKickToDirection(Vector2D $direction, ?float $speed): Order;
-    
+
 makeOrderMoveToRegion(IRegion $region, ?float $speed): Order;
 makeOrderKickToRegion(IRegion $region, ?float $speed): Order;
-    
+
 makeOrderMoveToPlayer(Player $player, ?float $speed): Order;
 makeOrderKickToPlayer(Player $player, ?float $speed): Order;
-    
+
 makeOrderLookAtPoint(Point $point): Order;
 makeOrderLookAtDirection(Vector2D $direction): Order;
 
-makeOrderStop(): Order;
-
 makeOrderJumpToPoint(Point $target, ?float $speed): Order;
 
+makeOrderStop(): Order;
+
 makeOrderCatch(): Order;
+
+tryMakeOrderMoveToPoint(Point $point, ?float $speed): ?Order;
+tryMakeOrderKickToPoint(Point $target, ?float $speed): ?Order;
+
+tryMakeOrderMoveToDirection(Vector2D $direction, ?float $speed): ?Order;
+tryMakeOrderKickToDirection(Vector2D $direction, ?float $speed): ?Order;
+
+tryMakeOrderMoveToRegion(IRegion $region, ?float $speed): ?Order;
+tryMakeOrderKickToRegion(IRegion $region, ?float $speed): ?Order;
+
+tryMakeOrderMoveToPlayer(Player $player, ?float $speed): ?Order;
+tryMakeOrderKickToPlayer(Player $player, ?float $speed): ?Order;
+
+tryMakeOrderLookAtPoint(Point $point): ?Order;
+tryMakeOrderLookAtDirection(Vector2D $direction): ?Order;
+
+tryMakeOrderJumpToPoint(Point $target, ?float $speed): ?Order;
+ 
 ```

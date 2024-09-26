@@ -4,7 +4,13 @@ description: Tudo sobre o client Lugo4php.
 ---
 
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import GradientBox from '@/components/gradient-box';
 import Contact from '@/components/contact';
+
+## O que é o lugo4php ?
+<GradientBox>
+![Texto alternativo](../images/tests.png)
+</GradientBox>
 
 ## Guias
 <Cards>
@@ -38,11 +44,64 @@ import Contact from '@/components/contact';
 
 <Accordions>
 <Accordion title="Para quê serve a função beforeActions() ?">
- 
-My Content
+Esse método sempre é chamado logo antes dos métodos `onDisputing`, `onDefending`, `onHolding`, `onSupporting` e `asGoalkeeper`.
+
+Esse serve para ocasiões onde você tem um dados no seu bot que você quer atualizar sempre antes das ações, para que elas tenham esse dado sempre atualiazdo.
+
+Por exemplo digamos que você tem um dado X, que é computado ou seja você precisa calcular ele sempre, o que você pode fazer é como o exemplo abaixo.
+```php
+<?php
+
+use Lugo4php\Interfaces\IBot;
+
+class Bot implements IBot
+{
+	public int $seuDadoComputado = 0;
+
+	public function afterActions(GameInspector $inspector): void {
+    $this->seuDadoComputado = $this->metodoQueCalculaODado();
+  }
+
+  private function metodoQueCalculaODado() {
+    // seu código aqui...
+  }
+}
+```
  
 </Accordion>
 <Accordion title="Para quê serve a função afterActions() ?">
+Esse método sempre é chamado logo depois dos métodos `onDisputing`, `onDefending`, `onHolding`, `onSupporting` e `asGoalkeeper`.
+
+Esse serve para ocasiões onde você tem um dados no seu bot que você quer atualizar sempre depois das ações, para que elas no próximo turno tenha o dado do anterior, ou apenas para que você atualize sempre depois e não precise fazer isso em vários locais.
+
+Por exemplo digamos que você queira salvar o último holder (jogador que está com a bola), o que você pode fazer é como o exemplo abaixo.
+```php
+<?php
+
+use Lugo4php\Interfaces\IBot;
+
+class Bot implements IBot
+{
+  public int $ultimoHolder = null;
+
+  public function afterActions(GameInspector $inspector): void {
+    if($inspector->getBallHasHolder()) {
+      $this->ultimoHolder = $inspector->getBallHasHolder();
+    }
+  }
+
+  public function onDisputing(GameInspector $inspector): array
+  {
+      if($inspector->getBallHolder()->getTeamSide() === $inspector->getMyTeamSide()) {
+        // humm, se o último holder foi alguém do meu time e agora a bolá, 
+        // não está com ninguém... será que é um passe ?
+        // hummmmmmmm, nah.
+      }
+  }
+}
+```
+</Accordion>
+<Accordion title="O que são os métodos que começam com `try` ?">
  
 My Content
  
