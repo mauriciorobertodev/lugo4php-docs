@@ -5,36 +5,47 @@ icon: RiTeamLine
 ---
 
 ## getPlayers(): array
+
 Retorna um array de jogadores ([player](/player)).
+
 ```php
 $team->getPlayers();
 ```
 
 ## getName(): string
+
 Retorna o nome do time.
+
 ```php
 $team->getName();
 ```
 
 ## getScore(): iint
+
 Retorna a pontuação do time.
+
 ```php
 $team->getScore();
 ```
 
 ## getSide(): Side
+
 Retorna o lado do campo que o time pertence.
+
 ```php
 $team->getSide();
 ```
 
 ## hasPlayer(int $number): bool
+
 Retorna vardadero caso o time tenha um jogador com o número X.
+
 ```php
 $hasOrNot = $team->hasPlayer(10);
 ```
 
 ## Métodos
+
 ```php
 getPlayers(): array;
 getName(): string;

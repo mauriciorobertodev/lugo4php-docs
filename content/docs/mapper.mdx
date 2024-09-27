@@ -7,90 +7,106 @@ icon: LuMap
 import GradientBox from '@/components/gradient-box';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
-<GradientBox>
-![Texto alternativo](../images/mapper.png)
-</GradientBox>
+<GradientBox>![Texto alternativo](../images/mapper.png)</GradientBox>
 
 ## getCols(): int
+
 Retorna o total de colunas que o campo foi fatiado.
+
 ```php
 $mapper->getCols();
 ```
 
 ## setCols(int $cols): self
+
 Define o total de colunas que o campo foi fatiado.
+
 ```php
 $mapper->setCols(12);
 ```
 
 ## setRows(): int
+
 Retorna o total de linhas que o campo foi fatiado.
+
 ```php
 $mapper->setRows();
 ```
 
 ## setRows(int $cols): self
+
 Define o total de linhas que o campo foi fatiado.
+
 ```php
 $mapper->setRows(12);
 ```
 
 ## getSide(): Side
+
 Define o lado do campo com o qual o mapper está se baseando.
+
 ```php
 $mapper->getSide();
 ```
+
 <GradientBox>
-<Tabs items={['HOME', 'AWAY']}>
-  <Tab value="HOME">![Texto alternativo](../images/side/home.png)</Tab>
-  <Tab value="AWAY">![Texto alternativo](../images/side/away.png)</Tab>
-</Tabs>
+    <Tabs items={['HOME', 'AWAY']}>
+        <Tab value="HOME">![Texto alternativo](../images/side/home.png)</Tab>
+        <Tab value="AWAY">![Texto alternativo](../images/side/away.png)</Tab>
+    </Tabs>
 </GradientBox>
 
 ## getRegionWidth(): float
+
 Retorna a largura das regiões do campo.
+
 ```php
 $mapper->getRegionWidth();
 ```
-<GradientBox>
-![Texto alternativo](../images/region-width.png)
-</GradientBox>
+
+<GradientBox>![Texto alternativo](../images/region-width.png)</GradientBox>
 
 ## getRegionHeight(): float
+
 Retorna a altura das regiões do campo.
+
 ```php
 $mapper->getRegionHeight();
 ```
-<GradientBox>
-![Texto alternativo](../images/region-height.png)
-</GradientBox>
+
+<GradientBox>![Texto alternativo](../images/region-height.png)</GradientBox>
 
 ## getRegion(int $col, int $row): IRegion
+
 Retorna uma região especifíca.
+
 ```php
 $region = $mapper->getRegion(4, 3);
 ```
-<GradientBox>
-![Texto alternativo](../images/regions/region.png)
-</GradientBox>
+
+<GradientBox>![Texto alternativo](../images/regions/region.png)</GradientBox>
 
 ## getRegionFromPoint(Point $point): IRegion
+
 Retorna uma região onde contém um ponto X.
+
 ```php
 $point = new Point(500, 5000);
 $region = $mapper->getRegionFromPoint($point);
 ```
-<GradientBox>
-![Texto alternativo](../images/regions/point-to-region.png)
-</GradientBox>
+
+<GradientBox>![Texto alternativo](../images/regions/point-to-region.png)</GradientBox>
 
 ## getRandomRegion(): IRegion
+
 Retorna uma região aleatória do campo.
+
 ```php
 $region = $mapper->getRandomRegion();
 ```
 
 ## Métodos
+
 ```php
 getCols(): int;
 setCols(int $cols): self;

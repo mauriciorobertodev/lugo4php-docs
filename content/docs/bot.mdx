@@ -1,62 +1,81 @@
 ---
 title: Bot
 description: Classe que representa um bot/jogador.
-icon: RiRobot2Line  
+icon: RiRobot2Line
 ---
 
 ## onHolding(GameInspector $inspector): array
+
 Esse método será chamado quando o bot atual estiver em posse da bola.
+
 ```php
 $bot->onHolding($inspector);
 ```
 
 ## onDisputing(GameInspector $inspector): array
+
 Esse método será chamado quando a bola não estiver com nenhum jogador de ambos os times.
+
 ```php
 $bot->onDisputing($inspector);
 ```
 
 ## onDefending(GameInspector $inspector): array
+
 Esse método será chamado quando a bola estiver com um jogador do time adversário.
+
 ```php
 $bot->onDefending($inspector);
 ```
 
 ## onSupporting(GameInspector $inspector): array
+
 Esse método será chamado quando a bola estiver com um jogador do time do bot, ou seja com um aliado.
+
 ```php
 $bot->onSupporting($inspector);
 ```
 
 ## asGoalkeeper(GameInspector $inspector, PlayerState $state): array
+
 Esse método sempre é chamado quando o bot é o goleiro.
+
 ```php
 $bot->asGoalkeeper($inspector, $state);
 ```
 
 ## onReady(GameInspector $inspector): void
+
 Esse método sempre é chamado no início da partida e sempre que um gol acontece.
+
 ```php
 $bot->onReady($inspector);
 ```
 
 ## beforeActions(GameInspector $inspector): void
-Esse método sempre é chamado logo antes dos métodos `onDisputing`, `onDefending`, `onHolding`, `onSupporting` e `asGoalkeeper`.
+
+Esse método sempre é chamado logo antes dos métodos `onDisputing`, `onDefending`, `onHolding`,
+`onSupporting` e `asGoalkeeper`.
+
 ```php
 $bot->beforeActions($inspector);
 ```
 
 ## afterActions(GameInspector $inspector): void
-Esse método sempre é chamado logo após os métodos `onDisputing`, `onDefending`, `onHolding`, `onSupporting` e `asGoalkeeper`.
+
+Esse método sempre é chamado logo após os métodos `onDisputing`, `onDefending`, `onHolding`,
+`onSupporting` e `asGoalkeeper`.
+
 ```php
 $bot->afterActions($inspector);
 ```
 
 ## Métodos
+
 ```php
 beforeActions(GameInspector $inspector): void;
 afterActions(GameInspector $inspector): void;
-    
+
 onReady(GameInspector $inspector): void;
 
 onHolding(GameInspector $inspector): array;
@@ -66,4 +85,3 @@ onSupporting(GameInspector $inspector): array;
 
 asGoalkeeper(GameInspector $inspector, PlayerState $state): array;
 ```
-

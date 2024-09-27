@@ -1,187 +1,245 @@
 ---
 title: Point
 description: Classe que representa um ponto.
-icon: PiVectorTwoFill 
+icon: PiVectorTwoFill
 ---
 
 ## eq(IPositionable $positionable): bool
+
 Retorna verdadeiro caso o ponto/vetor seja equivalente.
+
 ```php
 $point->eq($pointOrVector);
 ```
 
 ## is(IPositionable $positionable): bool
+
 Retorna verdadeiro caso o ponto/vetor seja equivalente.
+
 ```php
 $point->is($pointOrVector);
 ```
 
 ## getX(): float
+
 Retorna o eixo X do ponto.
+
 ```php
 $point->getX();
 ```
 
 ## setX(float $x): self
+
 Define o eixo X do ponto.
+
 ```php
 $point->setX(5000);
 ```
 
 ## addX(float $value): self
+
 Adiciona um valor ao eixo X do ponto.
+
 ```php
 $point->addX(5000);
 ```
 
 ## subtractX(float $value): self
+
 Subtrai um valor ao eixo X do ponto.
+
 ```php
 $point->subtractX(5000);
 ```
 
 ## scaleX(float $value): self
+
 Escala o eixo X do ponto.
+
 ```php
 $point->scaleX(5000);
 ```
 
 ## divideX(float $value): self
+
 Divide o eixo X do ponto.
+
 ```php
 $point->divideX(5000);
 ```
 
 ## getY(): float
+
 Retorna o eixo Y do ponto.
+
 ```php
 $point->getY();
 ```
 
 ## setY(float $y): self
+
 Define o eixo Y do ponto.
+
 ```php
 $point->setY(5000);
 ```
 
 ## addY(float $value): self
+
 Adiciona um valor ao eixo Y do ponto.
+
 ```php
 $point->addY(5000);
 ```
 
 ## subtractY(float $value): self
+
 Subtrai um valor ao eixo Y do ponto.
+
 ```php
 $point->subtractY(5000);
 ```
 
 ## scaleY(float $value): self
+
 Escala o eixo Y do ponto.
+
 ```php
 $point->scaleY(5000);
 ```
 
 ## divideY(float $value): self
+
 Divide o eixo Y do ponto.
+
 ```php
 $point->divideY(5000);
 ```
 
 ## normalize(): self
+
 Normaliza o ponto.
+
 ```php
 $point->normalize();
 ```
 
 ## normalized(): IPositionable
+
 Retorna um clone normalizado do ponto.
+
 ```php
 $newPoint = $point->normalized();
 ```
 
 ## add(IPositionable | float $value): self
+
 Soma um valor em ambos os eixos do ponto.
+
 ```php
 $point->add(new Point(100, 200));
 $point->add(300);
 ```
 
 ## added(IPositionable | float $value): IPositionable
+
 Retorna um clone do ponto com um valor somado a ambos os eixos.
+
 ```php
 $newPoint = $point->added(new Point(100, 200));
 $newPoint = $point->added(300);
 ```
 
 ## subctract(IPositionable | float $value): self
+
 Subtrai um valor em ambos os eixos do ponto.
+
 ```php
 $point->subctract(new Point(100, 200));
 $point->subctract(300);
 ```
 
 ## subtracted(IPositionable | float $value): IPositionable
+
 Retorna um clone do ponto com um valor subtraido a ambos os eixos.
+
 ```php
 $newPoint = $point->subtracted(new Point(100, 200));
 $newPoint = $point->subtracted(300);
 ```
 
 ## divide(IPositionable | float $value): self
+
 Divide ambos os eixos do ponto por um valor.
+
 ```php
 $point->divide(new Point(100, 200));
 $point->divide(300);
 ```
 
 ## divided(IPositionable | float $value): IPositionable
+
 Retorna um clone do ponto com ambos os eixos dividios por um valor.
+
 ```php
 $newPoint = $point->divided(new Point(100, 200));
 $newPoint = $point->divided(300);
 ```
 
 ## scale(IPositionable | float $value): self
+
 Escala ambos os eixos do ponto por um valor.
+
 ```php
 $point->scale(new Point(100, 200));
 $point->scale(300);
 ```
 
 ## scaled(IPositionable | float $value): IPositionable
+
 Retorna um clone do ponto com ambos os eixos escalados por um valor.
+
 ```php
 $newPoint = $point->scaled(new Point(100, 200));
 $newPoint = $point->scaled(300);
 ```
 
 ## magnitude(): float
+
 Retorna a magnitude do ponto.
+
 ```php
 $point->magnitude();
 ```
 
 ## clone(): float
+
 Retorna um clone do ponto.
+
 ```php
 $point->clone();
 ```
 
 ## directionTo(IPositionable $to): Vector2D
+
 Retorna a direção partindo do ponto para outro.
+
 ```php
 $point->directionTo($pointOrVector);
 ```
 
 ## distanceTo(IPositionable $to): float
+
 Retorna a diistância de um ponto para outro.
+
 ```php
 $point->distanceTo($pointOrVector);
 ```
 
 ## moveToDirection(Vector2D $direction, float $distance): self
+
 Desloca um ponto para direção X percorrendo uma distancia X.
+
 ```php
 $direction = new Vector2D(0, 1);
 $distance = 40;
@@ -189,7 +247,9 @@ $point->moveToDirection($direction, $distance);
 ```
 
 ## movedToDirection(Vector2D $direction, float $distance): Point
+
 Retorna um clone do ponto deslocado para direção X por uma distancia X.
+
 ```php
 $direction = new Vector2D(0, 1);
 $distance = 40;
@@ -197,21 +257,27 @@ $newPoint = $point->movedToDirection($direction, $distance);
 ```
 
 ## moveToPoint(Point $point, float $distance): self;
+
 Desloca um ponto para direção a um ponto X percorrendo uma distancia X.
+
 ```php
 $point = new Point(6000, 7000);
 $point->moveToPoint($point);
 ```
 
 ## movedToPoint(Point $point, float $distance): Point;
+
 Retorna um clone do ponto deslocado em direção a um ponto X por uma distancia X.
+
 ```php
 $point = new Point(6000, 7000);
 $newPoint = $point->movedToPoint($point);
 ```
 
-## __toString(): string;
+## \_\_toString(): string;
+
 Retorna o ponto em forma de string.
+
 ```php
 echo $point;
 echo sprint('Coordenadas: %s', $point);
@@ -219,6 +285,7 @@ echo sprint('Coordenadas: %s', $point);
 ```
 
 ## Métodos
+
 ```php
 eq(IPositionable $positionable): bool;
 is(IPositionable $positionable): bool;

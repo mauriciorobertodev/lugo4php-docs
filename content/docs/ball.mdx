@@ -1,82 +1,107 @@
 ---
 title: Ball
 description: Classe que representa uma bola.
-icon: PiSoccerBallFill 
+icon: PiSoccerBallFill
 ---
 
 ## getPosition(): Point
+
 Retorna a posição atual da bola.
+
 ```php
 $ball->getPosition();
 ```
 
 ## getVelocity(): Velocity
+
 Retorna a velocity atual da bola.
+
 ```php
 $ball->getVelocity();
 ```
 
 ## getDirection(): Vector2D
+
 Retorna a direção atual da bola.
+
 ```php
 $ball->getDirection();
 ```
 
 ## getSpeed(): float
+
 Retorna a velocidade atual da bola.
+
 ```php
 $ball->getSpeed();
 ```
 
 ## hasHolder(): bool
+
 Retorna verdadeiro se a bola está com algum jogador.
+
 ```php
 $ball->hasHolder();
 ```
 
 ## holderIs(Player $holder): bool
+
 Retorna verdadeiro se a bola está sendo segura por algum jogador e ele for o jogador dado.
+
 ```php
 $ball->holderIs($player);
 ```
 
 ## directionToPlayer(Player $player): Vector2D
+
 Retorna a direção que a bola precisa se dirigir para ir em direção ao jogador X.
+
 ```php
 $ball->directionToPlayer($player);
 ```
 
 ## distanceToPlayer(Player $player): float
+
 Retorna a distância entre a bola e o jogador X.
+
 ```php
 $ball->distanceToPlayer($player);
 ```
 
 ## directionToPoint(Point $point): Vector2D
+
 Retorna a direção que a bola precisa se dirigir para ir em direção a um ponto.
+
 ```php
 $ball->directionToPoint($point);
 ```
 
 ## distanceToPoint(Point $point): float
+
 Retorna a distância entre a bola e um ponto.
+
 ```php
 $ball->distanceToPoint($point);
 ```
 
 ## directionToRegion(IRegion $region): Vector2D
+
 Retorna a direção que a bola precisa se dirigir para ir em direção ao centro de uma região.
+
 ```php
 $ball->directionToRegion($region);
 ```
 
 ## distanceToRegion(IRegion $region): float
+
 Retorna a distância entre a bola e o centro de uma região.
+
 ```php
 $ball->distanceToRegion($region);
 ```
 
 ## Métodos
+
 ```php
 getPosition(): Point;
 getVelocity(): Velocity;
@@ -93,4 +118,3 @@ distanceToPlayer(Player $player): float;
 distanceToPoint(Point $point): float;
 distanceToRegion(IRegion $region): float;
 ```
-

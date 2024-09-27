@@ -1,20 +1,26 @@
 ---
 title: Velocity
 description: Classe que representa um "movimento".
-icon: GiVelociraptor  
+icon: GiVelociraptor
 ---
 
-Você muito provavelmente nem usará esta classe diretamente, pense nela como um "movimento", ela tem um vetor de direção, e uma velocidade (escalar).
-Um obeto pode usar a Velocity para se mover, então ele irá somar a sua posição atual com o vetor de direção da velocity escalonado (multiplicado) pela velocidade (escalar).
+Você muito provavelmente nem usará esta classe diretamente, pense nela como um "movimento", ela tem
+um vetor de direção, e uma velocidade (escalar). Um obeto pode usar a Velocity para se mover, então
+ele irá somar a sua posição atual com o vetor de direção da velocity escalonado (multiplicado) pela
+velocidade (escalar).
 
 ## getSpeed(): int
+
 Retorna a velocidade atual do jogador.
+
 ```php
 $player->getSpeed();
 ```
 
 ## getDirection(): Vector2D
+
 Retorna a direção atual do jogador.
+
 ```php
 $player->getDirection();
 ```

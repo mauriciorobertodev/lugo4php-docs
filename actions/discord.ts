@@ -1,5 +1,5 @@
 'use server';
 
 export async function sendContact() {
-	console.log('AI PAPAI');
+    console.log('AI PAPAI');
 }

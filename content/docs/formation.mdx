@@ -1,55 +1,71 @@
 ---
 title: Formation
 description: Classe que representa uma formação.
-icon: Formation 
+icon: Formation
 ---
 
 ## getName(): string
+
 Retorna o nome da formação.
+
 ```php
 $formation->getName();
 ```
 
 ## setName(string $name): self
+
 Define o nome da formação.
+
 ```php
 $formation->setName('name');
 ```
 
 ## getType(): FormationType
+
 Retorna o tipo da formação.
+
 ```php
 $formation->getType();
 ```
 
 ## setType(FormationType $type): self
+
 Define o tipo da formação.
+
 ```php
 $formation->setType(FormationType::REGIONS);
 $formation->setType(FormationType::POINTS);
 ```
 
 ## getPositionOf(int $playerNumber): Point
+
 Retorna a posição do jogador X na formação.
+
 ```php
 $formation->getPositionOf(3);
 ```
 
 ## setPositionOf(int $playerNumber, Point $position): self
+
 Define a posição do jogador X na formação.
+
 ```php
 $position = new Point(5999, 5687);
 $formation->setPositionOf(3, $point);
 ```
 
 ## definePositionOf(int $playerNumber, float $x, float $y): self
+
 Define a posição do jogador X na formação.
+
 ```php
 $formation->setPositionOf(3, 5999, 5687);
 ```
 
 ## getPositionOfX(): Point
+
 Retorna a posição do jogador X na formação.
+
 ```php
 $formation->getPositionOf01();
 $formation->getPositionOf02();
@@ -65,7 +81,9 @@ $formation->getPositionOf11();
 ```
 
 ## setPositionOfX(Point $position): self
+
 Define a posição do jogador X na formação.
+
 ```php
 $position = new Point(5999, 5687);
 
@@ -83,7 +101,9 @@ $formation->setPositionOf11($position);
 ```
 
 ## definePositionOfX(Point $position): self
+
 Define a posição do jogador X na formação.
+
 ```php
 $formation->setPositionOf01(5999, 5687);
 $formation->setPositionOf02(5999, 5687);
@@ -99,7 +119,9 @@ $formation->setPositionOf11(5999, 5687);
 ```
 
 ## toArray(): array
+
 Define um array de points com as posições dos jogadores.
+
 ```php
 $array = $formation->toArray();
 
@@ -119,13 +141,17 @@ $array = $formation->toArray();
 ```
 
 ## createZeroed(): IFormation
+
 Cria uma formação com todos os jogadores na posição `x: 0, y: 0`.
+
 ```php
 $formation = Formation::createZeroed();
 ```
 
 ## createFromArray(array $array): IFormation
+
 Cria uma formação com todos os jogadores na posição `x: 0, y: 0`.
+
 ```php
 $formation = Formation::createFromArray([
 	1 => ['col' => 0, 'row' => 0],
@@ -143,6 +169,7 @@ $formation = Formation::createFromArray([
 ```
 
 ## Métodos
+
 ```php
 getName(): string;
 setName(string $name): self;
