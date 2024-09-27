@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import { source } from '@/app/source';
 import { I18nProvider } from "fumadocs-ui/i18n";
 import { MenuTitle } from '@/ui/menu-title';
-import { BookIcon, Heart, LayoutTemplateIcon } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Layout({
