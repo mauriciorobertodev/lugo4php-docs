@@ -3,45 +3,46 @@ import type { Metadata } from 'next';
 import {
   DocsPage,
   DocsBody,
-  DocsDescription,
   DocsTitle,
+  DocsDescription,
 } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
-
+ 
 export default async function Page({
   params,
 }: {
-  params: { slug?: string[] };
+  params: { lang: string; slug?: string[] };
 }) {
-  const page = source.getPage(params.slug);
+  const page = source.getPage(params.slug, params.lang);
   if (!page) notFound();
-
+ 
   const MDX = page.data.body;
-
+ 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage toc={page.data.toc}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <MDX components={{ 
-          ...defaultMdxComponents,
-          img: (props) => <ImageZoom {...(props as any)} className={`${props.className} rounded-lg m-0`}/>,
-        }} />
+        <MDX components={{ ...defaultMdxComponents, img: (props) => <ImageZoom {...(props as any)} /> }} />
       </DocsBody>
     </DocsPage>
   );
 }
-
+ 
 export async function generateStaticParams() {
   return source.generateParams();
 }
-
-export function generateMetadata({ params }: { params: { slug?: string[] } }) {
-  const page = source.getPage(params.slug);
+ 
+export function generateMetadata({
+  params,
+}: {
+  params: { lang: string; slug?: string[] };
+}) {
+  const page = source.getPage(params.slug, params.lang);
   if (!page) notFound();
-
+ 
   return {
     title: page.data.title,
     description: page.data.description,

@@ -21,6 +21,7 @@
 	"point",
 	"vector2d",
 	"velocity",
+	"shot-clock",
     "---Enums---",
     "player-state",
     "side"
