@@ -20,7 +20,7 @@ Retorna um jogador especifíco da partida, lança um erro caso não exista.
 $player5 = $inspector->getPlayer(Side::HOME, 5);
 ```
 
-## getPlayer(Side $side, int $number): ?Player
+## tryGetPlayer(Side $side, int $number): ?Player
 
 Retorna um jogador especifíco da partida, ou `null` caso não exista.
 
