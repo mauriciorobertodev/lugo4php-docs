@@ -4,6 +4,7 @@ import { source } from '@/app/source';
 import { I18nProvider } from "fumadocs-ui/i18n";
 import { MenuTitle } from '@/ui/menu-title';
 import Image from 'next/image';
+import LugoBotsPng from '@/images/lugo-bots.png'
 
 export default function Layout({
   params,
@@ -62,7 +63,7 @@ export default function Layout({
     {
       text: 'Lugo Bots',
       url: 'https://lugobots.ai',
-      icon: <Image src="https://lugobots.ai/favicon.png" width={16} height={16} alt="Lugo Bots"/>,
+      icon: <Image src={LugoBotsPng} width={16} height={16} alt="Lugo Bots"/>,
     },
   ]}
       
