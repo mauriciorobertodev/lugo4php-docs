@@ -4,22 +4,18 @@ description: Tudo sobre o client Lugo4php.
 ---
 
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Blockquote } from '@/components/blockquote';
 import GradientBox from '@/components/gradient-box';
+import LugoBotsPng from '@/images/lugo-bots.png';
 import Contact from '@/components/contact';
 import { icons } from '@/app/source';
-
-## O que é o lugo4php ?
-
-Lugo4PHP é um pacote feito em PHP criado para conectar um bot com servidor do Lugo Bots, escondendo
-a complexidade da conexão gRPC e disponibilizando várias classes e métodos que auxiliam um
-desenvolvedor a criar um bot para Lugo Bots.
-
-<GradientBox>![Texto alternativo](../images/tests.png)</GradientBox>
+import Image from 'next/image';
 
 ## Guias
 
 <Cards>
     <Card title="Iniciando um novo bot" href="/start-new-bot" icon={<icons.Pacifier />} />
+    <Card title="Especificações" href="https://spec.lugobots.ai/specs.html" icon={<Image src={LugoBotsPng} width={16} height={16} alt="Lugo Bots" />} />
 </Cards>
 
 ## Classes
@@ -47,6 +43,14 @@ desenvolvedor a criar um bot para Lugo Bots.
     <Card title="PlayerState" href="/player-state" icon={<icons.FaFlagUsa />} />
     <Card title="Side" href="/side" icon={<icons.FaArrowsLeftRight />} />
 </Cards>
+
+## O que é o lugo4php ?
+
+Lugo4PHP é um pacote feito em PHP criado para conectar um bot com servidor do Lugo Bots, escondendo
+a complexidade da conexão gRPC e disponibilizando várias classes e métodos que auxiliam um
+desenvolvedor a criar um bot para Lugo Bots.
+
+<GradientBox>![Texto alternativo](../images/tests.png)</GradientBox>
 
 ## FAQ
 
@@ -118,12 +122,21 @@ class Bot implements IBot
 
 </Accordion>
 <Accordion title="O que são os métodos que começam com `try` ?">
- 
-My Content
+
+Os métodos que começam com `try` são métodos que normalmente lançam um erro caso algo dê errado, mas em sua versão `try` ele simplesmente retorna null, por exemplo.
+```php
+$inspector->getOpponentPlayer(10) // ho não!! eu não controlo o bot do oponente e ele caiu, e essa função lançou um erro.
+$inspector->tryGetOpponentPlayer(10) // ho não!! eu não controlo o bot do oponente e ele caiu, mas agora retornou null e posso lidar com isso.
+
+$inspector->getMyPlayer(10) // 😎 Meus bots não caem, #confia.
+$inspector->tryGetMyPlayer(10) // 😳 Confio não oh!.
+```
+
+E porque você criou desta forma?
+
+R.: Porque eu confio nos meus bots e acho muito chato ficar validando se eu recebi um `Player` ou um `null` 😎👍.
  
 </Accordion>
 </Accordions>
 
-## Seguestões são bem vindas! 🤩
-
-<Contact />
+Seguestões são bem vindas! 🤩

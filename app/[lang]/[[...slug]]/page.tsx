@@ -4,6 +4,7 @@ import { DocsPage, DocsBody, DocsTitle, DocsDescription } from 'fumadocs-ui/page
 import { notFound } from 'next/navigation';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
+import { Blockquote } from '@/components/blockquote';
 
 export default async function Page({ params }: { params: { lang: string; slug?: string[] } }) {
     const page = source.getPage(params.slug, params.lang);
@@ -20,6 +21,7 @@ export default async function Page({ params }: { params: { lang: string; slug?: 
                     components={{
                         ...defaultMdxComponents,
                         img: (props) => <ImageZoom {...(props as any)} />,
+                        blockquote: (props) => <Blockquote {...(props as any)} />,
                     }}
                 />
             </DocsBody>
